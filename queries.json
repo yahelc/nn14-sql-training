@@ -1,0 +1,10 @@
+{
+	"States with the most zipcodes" : "SELECT state, count(*) FROM zipcodes GROUP BY state order by count(*) DESC LIMIT 10 ;",
+	"Top Representatives for signers of the Death Star petition" : "select legislator_id, title, firstname, lastname, party, leg.state, leg.district, leg.twitter_id, count(*) as signatures  FROM wtp_data_signatures sig INNER JOIN district dis ON dis.zip=sig.zip INNER JOIN legislator leg ON leg.state=dis.state AND leg.district=dis.district where petition_id='50a3fd762f2c88cd65000015' group by legislator_id order by signatures desc limit 10;",
+	"Most recent signatures": "SELECT * FROM wtp_data_signatures ORDER BY create_dt desc limit 10;",
+	"Signatures by Date": "select create_dt, count(*) as signatures  FROM wtp_data_signatures where petition_id='50a3fd762f2c88cd65000015' group by create_dt",
+	"Top Signing Days of the Week": "SELECT DAYNAME(created_ts), count(*) FROM wtp_data_signatures GROUP BY 1 ORDER BY 2 DESC"
+
+
+
+}
